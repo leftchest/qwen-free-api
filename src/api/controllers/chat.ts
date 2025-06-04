@@ -17,6 +17,10 @@ import util from "@/lib/util.ts";
 const MODEL_NAME = "qwen";
 // 法律咨询模型名称
 const LAW_MODEL_NAME = "law";
+// 纯文本解题模型名称
+const SOLVE_TXT_MODEL_NAME = "solve_txt";
+// 图文解题模型名称
+const SOLVE_PIC_MODEL_NAME = "solve_pic";
 // 最大重试次数
 const MAX_RETRY_COUNT = 3;
 // 重试延迟
@@ -1445,6 +1449,480 @@ function createLawTransStream(stream: any, endCallback?: Function) {
   return transStream;
 }
 
+/**
+ * 解题对话补全（纯文本）
+ *
+ * @param model 模型名称
+ * @param messages 参考gpt系列消息格式，多轮对话请完整提供上下文
+ * @param ticket tongyi_sso_ticket或login_aliyunid_ticket
+ * @param refConvId 引用的会话ID
+ * @param retryCount 重试次数
+ */
+async function createSolveCompletion(
+  model = SOLVE_TXT_MODEL_NAME,
+  messages: any[],
+  ticket: string,
+  refConvId = '',
+  retryCount = 0
+) {
+  let session: http2.ClientHttp2Session;
+  return (async () => {
+    logger.info("解题请求:", messages);
+
+    // 提取引用文件URL并上传qwen获得引用的文件ID列表
+    const refFileUrls = extractRefFileUrls(messages);
+    const refs = refFileUrls.length
+      ? await Promise.all(
+          refFileUrls.map((fileUrl) => uploadFile(fileUrl, ticket))
+        )
+      : [];
+
+    // 如果引用对话ID不正确则重置引用
+    if (!/[0-9a-z]{32}/.test(refConvId))
+      refConvId = '';
+
+    // 请求流 - 使用解题专用的API端点
+    const session: http2.ClientHttp2Session = await new Promise(
+      (resolve, reject) => {
+        const session = http2.connect("https://api.tongyi.com");
+        session.on("connect", () => resolve(session));
+        session.on("error", reject);
+      }
+    );
+    const [sessionId, parentMsgId = ''] = refConvId.split('-');
+    const req = session.request({
+      ":method": "POST",
+      ":path": "/dialog/conversation",
+      "Content-Type": "application/json",
+      Cookie: generateCookie(ticket),
+      ...FAKE_HEADERS,
+      Accept: "text/event-stream",
+      // 解题专用headers
+      Origin: "https://www.tongyi.com",
+      Referer: "https://www.tongyi.com/discover/chat?agentId=A-B70463-a3e151d8",
+    });
+    req.setTimeout(120000);
+    req.write(
+      JSON.stringify({
+        model: "",
+        action: "next",
+        mode: "chat",
+        userAction: "chat",
+        requestId: util.uuid(false),
+        sessionId,
+        sessionType: "text_chat",
+        parentMsgId,
+        params: {
+          agentId: "A-B70463-a3e151d8",
+          searchType: "",
+          pptGenerate: false,
+          bizScene: "",
+          bizSceneInfo: {},
+          specifiedModel: "",
+          deepThink: false,
+          deepResearch: false
+        },
+        contents: prepareSolveMessages(messages, refs, !!refConvId),
+      })
+    );
+    req.setEncoding("utf8");
+    const streamStartTime = util.timestamp();
+    // 接收流为输出文本
+    const answer = await receiveSolveStream(req, model);
+    session.close();
+    logger.success(
+      `Solve completion stream completed ${util.timestamp() - streamStartTime}ms`
+    );
+
+    // 异步移除会话，如果消息不合规，此操作可能会抛出数据库错误异常，请忽略
+    removeConversation(answer.id, ticket).catch((err) => console.error(err));
+
+    return answer;
+  })().catch((err) => {
+    session && session.close();
+    if (retryCount < MAX_RETRY_COUNT) {
+      logger.error(`Solve completion stream response error: ${err.message}`);
+      logger.warn(`Try again after ${RETRY_DELAY / 1000}s...`);
+      return (async () => {
+        await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
+        return createSolveCompletion(model, messages, ticket, refConvId, retryCount + 1);
+      })();
+    }
+    throw err;
+  });
+}
+
+/**
+ * 流式解题对话补全
+ *
+ * @param model 模型名称
+ * @param messages 参考gpt系列消息格式，多轮对话请完整提供上下文
+ * @param ticket tongyi_sso_ticket或login_aliyunid_ticket
+ * @param refConvId 引用的会话ID
+ * @param retryCount 重试次数
+ */
+async function createSolveCompletionStream(
+  model = SOLVE_TXT_MODEL_NAME,
+  messages: any[],
+  ticket: string,
+  refConvId = '',
+  retryCount = 0
+) {
+  let session: http2.ClientHttp2Session;
+  return (async () => {
+    logger.info("解题流式请求:", messages);
+
+    // 提取引用文件URL并上传qwen获得引用的文件ID列表
+    const refFileUrls = extractRefFileUrls(messages);
+    const refs = refFileUrls.length
+      ? await Promise.all(
+          refFileUrls.map((fileUrl) => uploadFile(fileUrl, ticket))
+        )
+      : [];
+
+    // 如果引用对话ID不正确则重置引用
+    if (!/[0-9a-z]{32}/.test(refConvId))
+      refConvId = ''
+
+    // 请求流 - 使用解题专用的API端点
+    session = await new Promise((resolve, reject) => {
+      const session = http2.connect("https://api.tongyi.com");
+      session.on("connect", () => resolve(session));
+      session.on("error", reject);
+    });
+    const [sessionId, parentMsgId = ''] = refConvId.split('-');
+    const req = session.request({
+      ":method": "POST",
+      ":path": "/dialog/conversation",
+      "Content-Type": "application/json",
+      Cookie: generateCookie(ticket),
+      ...FAKE_HEADERS,
+      Accept: "text/event-stream",
+      // 解题专用headers
+      Origin: "https://www.tongyi.com",
+      Referer: "https://www.tongyi.com/discover/chat?agentId=A-B70463-a3e151d8",
+    });
+    req.setTimeout(120000);
+    req.write(
+      JSON.stringify({
+        model: "",
+        action: "next",
+        mode: "chat",
+        userAction: "chat",
+        requestId: util.uuid(false),
+        sessionId,
+        sessionType: "text_chat",
+        parentMsgId,
+        params: {
+          agentId: "A-B70463-a3e151d8",
+          searchType: "",
+          pptGenerate: false,
+          bizScene: "",
+          bizSceneInfo: {},
+          specifiedModel: "",
+          deepThink: false,
+          deepResearch: false
+        },
+        contents: prepareSolveMessages(messages, refs, !!refConvId),
+      })
+    );
+    req.setEncoding("utf8");
+    const streamStartTime = util.timestamp();
+    // 创建转换流将消息格式转换为gpt兼容格式
+    return createSolveTransStream(req, model, (convId: string) => {
+      // 关闭请求会话
+      session.close();
+      logger.success(
+        `Solve completion stream completed ${util.timestamp() - streamStartTime}ms`
+      );
+      // 流传输结束后异步移除会话，如果消息不合规，此操作可能会抛出数据库错误异常，请忽略
+      removeConversation(convId, ticket).catch((err) => console.error(err));
+    });
+  })().catch((err) => {
+    session && session.close();
+    if (retryCount < MAX_RETRY_COUNT) {
+      logger.error(`Solve completion stream response error: ${err.message}`);
+      logger.warn(`Try again after ${RETRY_DELAY / 1000}s...`);
+      return (async () => {
+        await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
+        return createSolveCompletionStream(model, messages, ticket, refConvId, retryCount + 1);
+      })();
+    }
+    throw err;
+  });
+}
+
+/**
+ * 解题消息预处理
+ *
+ * 专门为解题场景优化的消息格式处理
+ *
+ * @param messages 参考gpt系列消息格式，多轮对话请完整提供上下文
+ * @param refs 参考文件列表
+ * @param isRefConv 是否为引用会话
+ */
+function prepareSolveMessages(messages: any[], refs: any[] = [], isRefConv = false) {
+  let content;
+  if (isRefConv || messages.length < 2) {
+    content = messages.reduce((content, message) => {
+      if (_.isArray(message.content)) {
+        return (
+          message.content.reduce((_content, v) => {
+            if (!_.isObject(v) || v["type"] != "text") return _content;
+            return _content + (v["text"] || "") + "\n";
+          }, content)
+        );
+      }
+      return content + `${message.content}\n`;
+    }, "");
+    logger.info("\n解题透传内容：\n" + content);
+  }
+  else {
+    content = messages.reduce((content, message) => {
+      if (_.isArray(message.content)) {
+        return message.content.reduce((_content, v) => {
+          if (!_.isObject(v) || v["type"] != "text") return _content;
+          return _content + `<|im_start|>${message.role || "user"}\n${v["text"] || ""}<|im_end|>\n`;
+        }, content);
+      }
+      return (content += `<|im_start|>${message.role || "user"}\n${
+        message.content
+      }<|im_end|>\n`);
+    }, "").replace(/\!\[.*\]\(.+\)/g, "");
+    logger.info("\n解题对话合并：\n" + content);
+  }
+  return [
+    {
+      content,
+      contentType: "text",
+      role: "user",
+      ext: {
+        searchType: "",
+        pptGenerate: false,
+        deepThink: false,
+        deepResearch: false
+      }
+    },
+    ...refs
+  ];
+}
+
+/**
+ * 从流接收完整的解题消息内容
+ *
+ * @param stream 消息流
+ * @param model 模型名称
+ */
+async function receiveSolveStream(stream: any, model: string): Promise<any> {
+  return new Promise((resolve, reject) => {
+    // 消息初始化
+    const data = {
+      id: "",
+      model: model,
+      object: "chat.completion",
+      choices: [
+        {
+          index: 0,
+          message: { role: "assistant", content: "" },
+          finish_reason: "stop",
+        },
+      ],
+      usage: { prompt_tokens: 1, completion_tokens: 1, total_tokens: 2 },
+      created: util.unixTimestamp(),
+    };
+    const parser = createParser((event) => {
+      try {
+        if (event.type !== "event") return;
+        if (event.data == "[DONE]") return;
+        // 解析JSON
+        const result = _.attempt(() => JSON.parse(event.data));
+        if (_.isError(result))
+          throw new Error(`Stream response invalid: ${event.data}`);
+        if (!data.id && result.sessionId && result.msgId)
+          data.id = `${result.sessionId}-${result.msgId}`;
+        const text = (result.contents || []).reduce((str, part) => {
+          const { contentType, role, content } = part;
+          if (contentType != "text" && contentType != "text2image") return str;
+          if (role != "assistant" && !_.isString(content)) return str;
+          return str + content;
+        }, "");
+        const exceptCharIndex = text.indexOf("�");
+        let chunk = text.substring(
+          exceptCharIndex != -1
+            ? Math.min(data.choices[0].message.content.length, exceptCharIndex)
+            : data.choices[0].message.content.length,
+          exceptCharIndex == -1 ? text.length : exceptCharIndex
+        );
+        if (chunk && result.contentType == "text2image") {
+          chunk = chunk.replace(
+            /https?:\/\/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=\,]*)/gi,
+            (url) => {
+              const urlObj = new URL(url);
+              urlObj.search = "";
+              return urlObj.toString();
+            }
+          );
+        }
+        if (result.msgStatus != "finished") {
+          // 对于解题，在生成过程中累积内容
+          if (result.contentType == "text" || !result.contentType)
+            data.choices[0].message.content += chunk;
+        } else {
+          // 当消息完成时，如果是incremental=false，说明contents包含完整内容
+          if (result.incremental === false && result.contents && result.contents.length > 0) {
+            // 提取完整的最终内容
+            const finalContent = result.contents.reduce((str, part) => {
+              if (part.role === "assistant" && part.contentType === "text" && part.status === "finished") {
+                return str + (part.content || "");
+              }
+              return str;
+            }, "");
+            data.choices[0].message.content = finalContent;
+          } else {
+            // 否则继续累积chunk
+            data.choices[0].message.content += chunk;
+          }
+
+          if (!result.canShare)
+            data.choices[0].message.content +=
+              "\n[内容由于不合规被停止生成，我们换个话题吧]";
+          if (result.errorCode)
+            data.choices[0].message.content += `服务暂时不可用，第三方响应错误：${result.errorCode}`;
+          resolve(data);
+        }
+      } catch (err) {
+        logger.error(err);
+        reject(err);
+      }
+    });
+    // 将流数据喂给SSE转换器
+    stream.on("data", (buffer) => parser.feed(buffer.toString()));
+    stream.once("error", (err) => reject(err));
+    stream.once("close", () => resolve(data));
+    stream.end();
+  });
+}
+
+/**
+ * 创建解题转换流
+ *
+ * 将流格式转换为gpt兼容流格式
+ *
+ * @param stream 消息流
+ * @param model 模型名称
+ * @param endCallback 传输结束回调
+ */
+function createSolveTransStream(stream: any, model: string, endCallback?: Function) {
+  // 消息创建时间
+  const created = util.unixTimestamp();
+  // 创建转换流
+  const transStream = new PassThrough();
+  let content = "";
+  !transStream.closed &&
+    transStream.write(
+      `data: ${JSON.stringify({
+        id: "",
+        model: model,
+        object: "chat.completion.chunk",
+        choices: [
+          {
+            index: 0,
+            delta: { role: "assistant", content: "" },
+            finish_reason: null,
+          },
+        ],
+        created,
+      })}\n\n`
+    );
+  const parser = createParser((event) => {
+    try {
+      if (event.type !== "event") return;
+      if (event.data == "[DONE]") return;
+      // 解析JSON
+      const result = _.attempt(() => JSON.parse(event.data));
+      if (_.isError(result))
+        throw new Error(`Stream response invalid: ${event.data}`);
+      const text = (result.contents || []).reduce((str, part) => {
+        const { contentType, role, content } = part;
+        if (contentType != "text" && contentType != "text2image") return str;
+        if (role != "assistant" && !_.isString(content)) return str;
+        return str + content;
+      }, "");
+      const exceptCharIndex = text.indexOf("�");
+      let chunk = text.substring(
+        exceptCharIndex != -1
+          ? Math.min(content.length, exceptCharIndex)
+          : content.length,
+        exceptCharIndex == -1 ? text.length : exceptCharIndex
+      );
+      if (chunk && result.contentType == "text2image") {
+        chunk = chunk.replace(
+          /https?:\/\/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=\,]*)/gi,
+          (url) => {
+            const urlObj = new URL(url);
+            urlObj.search = "";
+            return urlObj.toString();
+          }
+        );
+      }
+      if (result.msgStatus != "finished") {
+        if (chunk && result.contentType == "text") {
+          content += chunk;
+          const data = `data: ${JSON.stringify({
+            id: `${result.sessionId}-${result.msgId}`,
+            model: model,
+            object: "chat.completion.chunk",
+            choices: [
+              { index: 0, delta: { content: chunk }, finish_reason: null },
+            ],
+            created,
+          })}\n\n`;
+          !transStream.closed && transStream.write(data);
+        }
+      } else {
+        const delta = { content: chunk || "" };
+        if (!result.canShare)
+          delta.content += "\n[内容由于不合规被停止生成，我们换个话题吧]";
+        if (result.errorCode)
+          delta.content += `服务暂时不可用，第三方响应错误：${result.errorCode}`;
+        const data = `data: ${JSON.stringify({
+          id: `${result.sessionId}-${result.msgId}`,
+          model: model,
+          object: "chat.completion.chunk",
+          choices: [
+            {
+              index: 0,
+              delta,
+              finish_reason: "stop",
+            },
+          ],
+          usage: { prompt_tokens: 1, completion_tokens: 1, total_tokens: 2 },
+          created,
+        })}\n\n`;
+        !transStream.closed && transStream.write(data);
+        !transStream.closed && transStream.end("data: [DONE]\n\n");
+        content = "";
+        endCallback && endCallback(result.sessionId);
+      }
+    } catch (err) {
+      logger.error(err);
+      !transStream.closed && transStream.end("\n\n");
+    }
+  });
+  // 将流数据喂给SSE转换器
+  stream.on("data", (buffer) => parser.feed(buffer.toString()));
+  stream.once(
+    "error",
+    () => !transStream.closed && transStream.end("data: [DONE]\n\n")
+  );
+  stream.once(
+    "close",
+    () => !transStream.closed && transStream.end("data: [DONE]\n\n")
+  );
+  stream.end();
+  return transStream;
+}
+
 export default {
   createCompletion,
   createCompletionStream,
@@ -1453,4 +1931,6 @@ export default {
   tokenSplit,
   createLawCompletion,
   createLawCompletionStream,
+  createSolveCompletion,
+  createSolveCompletionStream,
 };

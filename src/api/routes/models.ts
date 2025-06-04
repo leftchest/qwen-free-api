@@ -52,6 +52,16 @@ export default {
                         "id": "law",
                         "object": "model",
                         "owned_by": "qwen-free-api"
+                    },
+                    {
+                        "id": "solve_txt",
+                        "object": "model",
+                        "owned_by": "qwen-free-api"
+                    },
+                    {
+                        "id": "solve_pic",
+                        "object": "model",
+                        "owned_by": "qwen-free-api"
                     }
                 ]
             };
