@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  qwen-free-api:
+    container_name: qwen-free-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8003:8000"
+    environment:
+      - TZ=Asia/Shanghai

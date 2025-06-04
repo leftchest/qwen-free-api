@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  qwen-free-api:
+    container_name: qwen-free-api
+    image: vinlic/qwen-free-api:latest
+    restart: always    
+    pull_policy: always
+    ports:
+      - "8003:8000"
+    environment:
+      - TZ=Asia/Shanghai

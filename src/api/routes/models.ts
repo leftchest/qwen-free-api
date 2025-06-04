@@ -47,6 +47,11 @@ export default {
                         "id": "qwen-v1-vision",
                         "object": "model",
                         "owned_by": "qwen-free-api"
+                    },
+                    {
+                        "id": "law",
+                        "object": "model",
+                        "owned_by": "qwen-free-api"
                     }
                 ]
             };
