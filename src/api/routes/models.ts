@@ -62,6 +62,11 @@ export default {
                         "id": "solve_pic",
                         "object": "model",
                         "owned_by": "qwen-free-api"
+                    },
+                    {
+                        "id": "Digital-people",
+                        "object": "model",
+                        "owned_by": "qwen-free-api"
                     }
                 ]
             };

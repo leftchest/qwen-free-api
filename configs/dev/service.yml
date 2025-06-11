@@ -4,3 +4,5 @@ name: qwen-free-api
 host: '0.0.0.0'
 # 服务绑定端口
 port: 8000
+# 数字人智能体ID
+digital_people_agent_id: 'A-53746-9d456f6a'

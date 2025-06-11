@@ -1,0 +1,3759 @@
+##第一次请求视频生成请求raw数据：
+
+POST https://api.tongyi.com/dialog/conversation HTTP/2
+host: api.tongyi.com
+content-length: 1265
+x-platform: pc_tongyi
+sec-ch-ua-platform: "Windows"
+x-xsrf-token: 
+sec-ch-ua: "Microsoft Edge";v="137", "Chromium";v="137", "Not/A)Brand";v="24"
+sec-ch-ua-mobile: ?0
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0
+accept: text/event-stream
+content-type: application/json
+origin: https://www.tongyi.com
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://www.tongyi.com/discover/chat?agentId=A-53746-9d456f6a
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh,zh-CN;q=0.9,en-US;q=0.8,en;q=0.7,en-GB;q=0.6
+priority: u=1, i
+cookie: tongyi_sso_ticket=jCc$oyX5SjYl1h2e3A57TzGRQaQ_1nhv25YtKOiEGLuWegUEfb6zzp_8Gn1gsBy1ogROHqapzX0d0; cna=tjG3ILfbvV4CAX0u418KLot0; _samesite_flag_=true; isg=BIOD9bM876yYDKMu5iv8GG_TEkct-Bc6lFuDMLVhbeJUdKWWP8xdiOqi6gw6am8y
+
+{"model":"","action":"next","mode":"chat","userAction":"chat","requestId":"0e32145adbbc4b98997fe905146a4020","sessionId":"","sessionType":"text_chat","parentMsgId":"28fbcc9aa12e4450b485518ff410f761","params":{"agentId":"A-53746-9d456f6a","searchType":"","pptGenerate":false,"bizScene":"","bizSceneInfo":{},"specifiedModel":"","deepThink":false,"deepResearch":false},"contents":[{"content":"直接播报以下内容：嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长法律咨询、旅行规划、题目解答等，我还在成长，偶尔也会偷懒，但还是很期待收到你的消息。","contentType":"text","role":"user","ext":{"searchType":"","pptGenerate":false,"deepThink":false,"deepResearch":false}}]}
+
+##响应中可以获取："cardCode"、"msgId"、"sessionId"，完整响应内容：
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "incremental": false,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "deepResearch": false
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 0,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "直接播报以下",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 2,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "内容：嗨！",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 3,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "我是小爱，",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 4,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "很高兴和您相遇",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 5,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "，我会根据对话",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 6,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "内容自动判断是否",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 7,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "需要联网和深度",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 8,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "分析；我可以就",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 9,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "文档或者图片内容",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 10,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "和您进行讨论",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 11,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "，擅长对图片",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 12,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "中的食品进行健康",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 13,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "分析；我会根据",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 14,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "您的绘图和",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 15,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "修图需求类型",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 16,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "，自动分流给",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 17,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "当下最适合的热门",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 18,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "平台进行针对性处理",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 19,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "；当然我也可以",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 20,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "生成简单的视频和",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 21,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "主题视频故事；",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 22,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "我还可以参考美国",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 23,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "国家医学馆文献",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 24,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "及其他医学知识库",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 25,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "结合本地医疗资源",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 26,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "为您提供健康医疗咨询",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 27,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "，也可以基于腾讯",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 28,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "股票接口数据进行",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 29,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "个股分析，我还",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 30,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "擅长法律咨询、",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 31,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "旅行规划、题目",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 32,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "解答等，我",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 33,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "还在成长，偶尔",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 34,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "也会偷懒，",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 35,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "但还是很期待收到",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 36,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "你的消息。 \n\n",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 37,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "这段话已经包含了",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 38,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "完成任务所需的所有",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 39,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "信息，即直接",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 40,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "播报用户提供的原始",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 41,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "内容。因此，",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 42,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "可以直接完成任务描述",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 43,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "。",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": true,
+            "index": 0,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 44,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 45,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 46,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 47,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 48,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 49,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 50,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 51,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 52,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 53,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 54,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 55,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 56,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 57,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 58,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 59,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 60,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 61,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 62,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 63,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 64,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 65,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 66,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 67,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 68,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 69,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 70,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 71,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 72,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 73,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 74,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 75,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长法律咨询、旅行\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 76,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长法律咨询、旅行规划、题目解答\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 77,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长法律咨询、旅行规划、题目解答等，我还在\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 78,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长法律咨询、旅行规划、题目解答等，我还在成长，偶尔也会\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 79,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长法律咨询、旅行规划、题目解答等，我还在成长，偶尔也会偷懒，但\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 80,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长法律咨询、旅行规划、题目解答等，我还在成长，偶尔也会偷懒，但还是很期待收到你的\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 81,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长法律咨询、旅行规划、题目解答等，我还在成长，偶尔也会偷懒，但还是很期待收到你的消息。\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 82,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长法律咨询、旅行规划、题目解答等，我还在成长，偶尔也会偷懒，但还是很期待收到你的消息。\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "index": 1,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "generating"
+        }
+    ],
+    "incremental": true,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "generating",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 83,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: {
+    "aiDisclaimer": false,
+    "canFeedback": true,
+    "canRegenerate": true,
+    "canShare": true,
+    "canShow": true,
+    "contentFrom": "text",
+    "contentType": "text",
+    "contents": [
+        {
+            "content": "直接播报以下内容：嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长法律咨询、旅行规划、题目解答等，我还在成长，偶尔也会偷懒，但还是很期待收到你的消息。 \n\n这段话已经包含了完成任务所需的所有信息，即直接播报用户提供的原始内容。因此，可以直接完成任务描述。",
+            "contentType": "text",
+            "id": "76346e8f38e444628c232207bd05831c_0",
+            "incremental": false,
+            "role": "assistant",
+            "roleAnswerId": "1749473712891591530",
+            "status": "finished"
+        },
+        {
+            "cardCode": "tongyi-plugin-creator",
+            "content": "{\"templateCode\":\"ReporterVideo\",\"content\":\"嗨！我是小爱，很高兴和您相遇，我会根据对话内容自动判断是否需要联网和深度分析；我可以就文档或者图片内容和您进行讨论，擅长对图片中的食品进行健康分析；我会根据您的绘图和修图需求类型，自动分流给当下最适合的热门平台进行针对性处理；当然我也可以生成简单的视频和主题视频故事；我还可以参考美国国家医学馆文献及其他医学知识库结合本地医疗资源为您提供健康医疗咨询，也可以基于腾讯股票接口数据进行个股分析，我还擅长法律咨询、旅行规划、题目解答等，我还在成长，偶尔也会偷懒，但还是很期待收到你的消息。\"}",
+            "contentType": "card",
+            "id": "76346e8f38e444628c232207bd05831c_1",
+            "incremental": false,
+            "role": "workflow",
+            "roleAnswerId": "1749473712891591530",
+            "status": "finished"
+        }
+    ],
+    "incremental": false,
+    "msgId": "76346e8f38e444628c232207bd05831c",
+    "msgStatus": "finished",
+    "params": {
+        "searchProb": ""
+    },
+    "parentMsgId": "d9b88ca800f94e71b3b5462f2a4bafa6",
+    "pkgId": 84,
+    "sessionId": "7208885fe1d44a04a83e32558a1096ff",
+    "sessionOpen": true,
+    "sessionShare": true,
+    "sessionWarnNew": false,
+    "traceId": "f609851675021a26fc3ec1438d3071bf"
+}
+
+data: [DONE
+]
+
+
+
+##第二次请求raw数据：
+
+POST https://api.tongyi.com/dialog/workflow/task/submit HTTP/2
+host: api.tongyi.com
+content-length: 195
+x-platform: pc_tongyi
+sec-ch-ua-platform: "Windows"
+x-xsrf-token: 
+sec-ch-ua: "Microsoft Edge";v="137", "Chromium";v="137", "Not/A)Brand";v="24"
+sec-ch-ua-mobile: ?0
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0
+accept: application/json, text/plain, */*
+content-type: application/json
+origin: https://www.tongyi.com
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://www.tongyi.com/discover/chat?agentId=A-53746-9d456f6a
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh,zh-CN;q=0.9,en-US;q=0.8,en;q=0.7,en-GB;q=0.6
+priority: u=1, i
+cookie: tongyi_sso_ticket=jCc$oyX5SjYl1h2e3A57TzGRQaQ_1nhv25YtKOiEGLuWegUEfb6zzp_8Gn1gsBy1ogROHqapzX0d0; cna=tjG3ILfbvV4CAX0u418KLot0; _samesite_flag_=true; isg=BP__h9cAq3CE1K8awke41MOnjtOJ5FOGqO-PJJHOj674oBgim7ef16r25nhexiv-
+
+{"agentId":"A-53746-9d456f6a","cardCode":"tongyi-plugin-creator","msgId":"76346e8f38e444628c232207bd05831c","sessionId":"7208885fe1d44a04a83e32558a1096ff","operationType":"create","taskParam":{}}
+
+##第二次响应获取："taskIds"，完整响应数据：
+
+{
+    "success": true,
+    "httpCode": 200,
+    "errorCode": null,
+    "errorMsg": null,
+    "data": {
+        "contents": [
+            {
+                "content": "{\"taskId\":\"0f7b84594f9649df933d7a77e2f0b3f0\"}",
+                "role": "assistant",
+                "status": "generating",
+                "contentType": "card",
+                "cardCode": "tongyi-plugin-video-create"
+            }
+        ],
+        "msgStatus": "generating",
+        "msgId": "76346e8f38e444628c232207bd05831c"
+    },
+    "traceId": "82b5351a2a0a50686433674164e04f16",
+    "failed": false
+}
+
+
+##第三次根据"taskIds"轮询请求生成结果，完整请求raw数据：
+
+POST https://api.tongyi.com/dialog/creative/task/get?from=qianwen_saas&header=%7B%22X-Platform%22%3A%22app%22%7D HTTP/2
+host: api.tongyi.com
+content-length: 48
+x-platform: pc_tongyi
+sec-ch-ua-platform: "Windows"
+x-xsrf-token: 
+sec-ch-ua: "Microsoft Edge";v="137", "Chromium";v="137", "Not/A)Brand";v="24"
+sec-ch-ua-mobile: ?0
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0
+accept: application/json, text/plain, */*
+content-type: application/json
+origin: https://www.tongyi.com
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://www.tongyi.com/discover/chat?agentId=A-53746-9d456f6a
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh,zh-CN;q=0.9,en-US;q=0.8,en;q=0.7,en-GB;q=0.6
+priority: u=1, i
+cookie: tongyi_sso_ticket=jCc$oyX5SjYl1h2e3A57TzGRQaQ_1nhv25YtKOiEGLuWegUEfb6zzp_8Gn1gsBy1ogROHqapzX0d0; cna=tjG3ILfbvV4CAX0u418KLot0; _samesite_flag_=true; isg=BL29VeAoiZovEy2ArAlaTpURzBm3WvGsPlmN3n8JtZWptsPofallfRYqZOLwBQlk
+
+{"taskIds":["4258962f509b4dc98ad0527414399a9f"]}
+
+## 任务未结束时响应数据：
+
+{
+    "success": true,
+    "httpCode": 200,
+    "errorCode": null,
+    "errorMsg": null,
+    "data": [
+        {
+            "taskId": "4258962f509b4dc98ad0527414399a9f",
+            "templateType": "ReporterVideo",
+            "templateId": "CREATIVE_TEMPLATE_004",
+            "agentTemplateConfig": {
+                "creativeLanguage": "CN",
+                "creativeReporter": "https://qianwen.alicdn.com/upload/20250605/460ecab83124ef7e040f55b83f5bf496/e63d1a17550a4538b34fce8bc1e753f4/61fff7ba-7542-e190-7df8-81f904a5b7ef.jpg",
+                "timbre": "longtian",
+                "creativeBackend": "backendLiveportrait",
+                "creativeContentRatio": "ratio_1_1",
+                "creativeLayout": "ReporterVideo_ratio_9_16",
+                "creativeTopic": "按用户输入的原始内容就行播报，禁止对用户输入内容进行改写"
+            },
+            "status": 1,
+            "statusMessage": null,
+            "title": null,
+            "ratio": "ratio_1_1",
+            "step": {
+                "timeEstimation": 60,
+                "steps": [
+                    {
+                        "icon": null,
+                        "code": "Outline",
+                        "name": "大纲生成",
+                        "node": "1",
+                        "timeEstimation": null
+                    },
+                    {
+                        "icon": null,
+                        "code": "VideoCombine",
+                        "name": "视频合成",
+                        "node": "3",
+                        "timeEstimation": null
+                    }
+                ],
+                "currentStep": "VideoCombine",
+                "editStep": "2",
+                "editStopStep": null,
+                "editRunMode": null,
+                "chatStopNodes": "2",
+                "resultSteps": [
+                    "3"
+                ],
+                "roleStep": null,
+                "contentStep": "1",
+                "descStep": null,
+                "titleStep": null,
+                "textStyleStep": null,
+                "advanceEditStep": "2"
+            },
+            "stepResults": [
+                {
+                    "step": "Outline",
+                    "total": 1,
+                    "contents": [
+                        {
+                            "content": "True\n\n我是小爱，很高兴认识大家。",
+                            "type": "text",
+                            "text": null,
+                            "title": null,
+                            "description": null,
+                            "role": null
+                        }
+                    ]
+                }
+            ],
+            "totalResult": 1,
+            "images": [],
+            "videos": [],
+            "contents": null,
+            "desc": null,
+            "role": null
+        }
+    ],
+    "traceId": "756ce8c2b53b23cf1c583b8d1f0e4e08",
+    "failed": false
+}
+
+
+
+##任务结束时从"videos"的"url"中获取视频地址，完整响应：
+
+{
+    "success": true,
+    "httpCode": 200,
+    "errorCode": null,
+    "errorMsg": null,
+    "data": [
+        {
+            "taskId": "4258962f509b4dc98ad0527414399a9f",
+            "templateType": "ReporterVideo",
+            "templateId": "CREATIVE_TEMPLATE_004",
+            "agentTemplateConfig": {
+                "creativeLanguage": "CN",
+                "creativeReporter": "https://qianwen.alicdn.com/upload/20250605/460ecab83124ef7e040f55b83f5bf496/e63d1a17550a4538b34fce8bc1e753f4/61fff7ba-7542-e190-7df8-81f904a5b7ef.jpg",
+                "timbre": "longtian",
+                "creativeBackend": "backendLiveportrait",
+                "creativeContentRatio": "ratio_1_1",
+                "creativeLayout": "ReporterVideo_ratio_9_16",
+                "creativeTopic": "按用户输入的原始内容就行播报，禁止对用户输入内容进行改写"
+            },
+            "status": 2,
+            "statusMessage": null,
+            "title": null,
+            "ratio": "ratio_1_1",
+            "step": {
+                "timeEstimation": 60,
+                "steps": [
+                    {
+                        "icon": null,
+                        "code": "Outline",
+                        "name": "大纲生成",
+                        "node": "1",
+                        "timeEstimation": null
+                    },
+                    {
+                        "icon": null,
+                        "code": "VideoCombine",
+                        "name": "视频合成",
+                        "node": "3",
+                        "timeEstimation": null
+                    }
+                ],
+                "currentStep": null,
+                "editStep": "2",
+                "editStopStep": null,
+                "editRunMode": null,
+                "chatStopNodes": "2",
+                "resultSteps": [
+                    "3"
+                ],
+                "roleStep": null,
+                "contentStep": "1",
+                "descStep": null,
+                "titleStep": null,
+                "textStyleStep": null,
+                "advanceEditStep": "2"
+            },
+            "stepResults": [
+                {
+                    "step": "Outline",
+                    "total": 1,
+                    "contents": [
+                        {
+                            "content": "True\n\n我是小爱，很高兴认识大家。",
+                            "type": "text",
+                            "text": null,
+                            "title": null,
+                            "description": null,
+                            "role": null
+                        }
+                    ]
+                },
+                {
+                    "step": "VideoCombine",
+                    "total": 1,
+                    "contents": [
+                        {
+                            "content": "https://wanx.alicdn.com/wanx/1732019240811040115/creative_workspace/8163be84-3250-9609-955f-28f799aef2f3-3-0-0.mp4",
+                            "type": "video",
+                            "text": null,
+                            "title": null,
+                            "description": null,
+                            "role": null
+                        }
+                    ]
+                }
+            ],
+            "totalResult": 1,
+            "images": [],
+            "videos": [
+                {
+                    "url": "https://wanx.alicdn.com/wanx/1732019240811040115/creative_workspace/8163be84-3250-9609-955f-28f799aef2f3-3-0-0.mp4",
+                    "poster": "https://qianwen.alicdn.com/upload/20250605/460ecab83124ef7e040f55b83f5bf496/e63d1a17550a4538b34fce8bc1e753f4/61fff7ba-7542-e190-7df8-81f904a5b7ef.jpg"
+                }
+            ],
+            "contents": [
+                "True\n\n我是小爱，很高兴认识大家。"
+            ],
+            "desc": [],
+            "role": {}
+        }
+    ],
+    "traceId": "66d971b34ee3ec635e76da86a9ab9921",
+    "failed": false
+}
+
+
+
+
+
+
+
+
+

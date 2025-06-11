@@ -41,6 +41,26 @@ export default {
             convId
           );
         }
+      } else if (model === "Digital-people") {
+        // 数字人视频生成模型
+        if (stream) {
+          const stream = await chat.createDigitalPeopleCompletionStream(
+            model,
+            messages,
+            token,
+            convId
+          );
+          return new Response(stream, {
+            type: "text/event-stream",
+          });
+        } else {
+          return await chat.createDigitalPeopleCompletion(
+            model,
+            messages,
+            token,
+            convId
+          );
+        }
       } else {
         // 法律咨询模型（默认）
         if (stream) {

@@ -24,14 +24,17 @@ export class ServiceConfig {
     urlPrefix;
     /** @type {string} 服务绑定地址（外部访问地址） */
     bindAddress;
+    /** @type {string} 数字人智能体ID */
+    digital_people_agent_id;
 
     constructor(options?: any) {
-        const { name, host, port, urlPrefix, bindAddress } = options || {};
+        const { name, host, port, urlPrefix, bindAddress, digital_people_agent_id } = options || {};
         this.name = _.defaultTo(name, 'qwen-free-api');
         this.host = _.defaultTo(host, '0.0.0.0');
         this.port = _.defaultTo(port, 5566);
         this.urlPrefix = _.defaultTo(urlPrefix, '');
         this.bindAddress = bindAddress;
+        this.digital_people_agent_id = digital_people_agent_id;
     }
 
     get addressHost() {
@@ -57,7 +60,7 @@ export class ServiceConfig {
     }
 
     static load() {
-        const external = _.pickBy(environment, (v, k) => ["name", "host", "port"].includes(k) && !_.isUndefined(v));
+        const external = _.pickBy(environment, (v, k) => ["name", "host", "port", "digital_people_agent_id"].includes(k) && !_.isUndefined(v));
         if(!fs.pathExistsSync(CONFIG_PATH)) return new ServiceConfig(external);
         const data = yaml.parse(fs.readFileSync(CONFIG_PATH).toString());
         return new ServiceConfig({ ...data, ...external });

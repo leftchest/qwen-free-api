@@ -12,6 +12,7 @@ import EX from "@/api/consts/exceptions.ts";
 import { createParser } from "eventsource-parser";
 import logger from "@/lib/logger.ts";
 import util from "@/lib/util.ts";
+import serviceConfig from "@/lib/configs/service-config.ts";
 
 // 模型名称
 const MODEL_NAME = "qwen";
@@ -21,6 +22,8 @@ const LAW_MODEL_NAME = "law";
 const SOLVE_TXT_MODEL_NAME = "solve_txt";
 // 图文解题模型名称
 const SOLVE_PIC_MODEL_NAME = "solve_pic";
+// 数字人视频生成模型名称
+const DIGITAL_PEOPLE_MODEL_NAME = "Digital-people";
 // 最大重试次数
 const MAX_RETRY_COUNT = 3;
 // 重试延迟
@@ -142,6 +145,7 @@ async function createCompletion(
         contents: messagesPrepare(messages, refs, !!refConvId),
       })
     );
+    req.end();
     req.setEncoding("utf8");
     const streamStartTime = util.timestamp();
     // 接收流为输出文本
@@ -162,7 +166,7 @@ async function createCompletion(
       logger.warn(`Try again after ${RETRY_DELAY / 1000}s...`);
       return (async () => {
         await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
-        return createCompletion(model, messages, ticket, refConvId, retryCount + 1);
+        return createCompletion(model, messages, searchType, ticket, refConvId, retryCount + 1);
       })();
     }
     throw err;
@@ -235,6 +239,7 @@ async function createCompletionStream(
         contents: messagesPrepare(messages, refs, !!refConvId),
       })
     );
+    req.end();
     req.setEncoding("utf8");
     const streamStartTime = util.timestamp();
     // 创建转换流将消息格式转换为gpt兼容格式
@@ -254,7 +259,7 @@ async function createCompletionStream(
       logger.warn(`Try again after ${RETRY_DELAY / 1000}s...`);
       return (async () => {
         await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
-        return createCompletionStream(model, messages, ticket, refConvId, retryCount + 1);
+        return createCompletionStream(model, messages, searchType, ticket, refConvId, retryCount + 1);
       })();
     }
     throw err;
@@ -305,6 +310,7 @@ async function generateImages(
         contents: messagesPrepare(messages),
       })
     );
+    req.end();
     req.setEncoding("utf8");
     const streamStartTime = util.timestamp();
     // 接收流为输出文本
@@ -1048,6 +1054,7 @@ async function createLawCompletion(
         contents: prepareLawMessages(messages, refs, !!refConvId),
       })
     );
+    req.end();
     req.setEncoding("utf8");
     const streamStartTime = util.timestamp();
     // 接收流为输出文本
@@ -1154,6 +1161,7 @@ async function createLawCompletionStream(
         contents: prepareLawMessages(messages, refs, !!refConvId),
       })
     );
+    req.end();
     req.setEncoding("utf8");
     const streamStartTime = util.timestamp();
     // 创建转换流将消息格式转换为gpt兼容格式
@@ -1525,6 +1533,7 @@ async function createSolveCompletion(
         contents: prepareSolveMessages(messages, refs, !!refConvId),
       })
     );
+    req.end();
     req.setEncoding("utf8");
     const streamStartTime = util.timestamp();
     // 接收流为输出文本
@@ -1626,6 +1635,7 @@ async function createSolveCompletionStream(
         contents: prepareSolveMessages(messages, refs, !!refConvId),
       })
     );
+    req.end();
     req.setEncoding("utf8");
     const streamStartTime = util.timestamp();
     // 创建转换流将消息格式转换为gpt兼容格式
@@ -1923,6 +1933,701 @@ function createSolveTransStream(stream: any, model: string, endCallback?: Functi
   return transStream;
 }
 
+/**
+ * 数字人消息预处理
+ *
+ * 专门为数字人视频生成场景优化的消息格式处理
+ *
+ * @param messages 参考gpt系列消息格式，多轮对话请完整提供上下文
+ * @param refs 参考文件列表
+ * @param isRefConv 是否为引用会话
+ */
+function prepareDigitalPeopleMessages(messages: any[], refs: any[] = [], isRefConv = false) {
+  let content;
+  if (isRefConv || messages.length < 2) {
+    content = messages.reduce((content, message) => {
+      if (_.isArray(message.content)) {
+        return (
+          message.content.reduce((_content, v) => {
+            if (!_.isObject(v) || v["type"] != "text") return _content;
+            return _content + (v["text"] || "") + "\n";
+          }, content)
+        );
+      }
+      return content + `${message.content}\n`;
+    }, "");
+    logger.info("\n数字人透传内容：\n" + content);
+  }
+  else {
+    content = messages.reduce((content, message) => {
+      if (_.isArray(message.content)) {
+        return message.content.reduce((_content, v) => {
+          if (!_.isObject(v) || v["type"] != "text") return _content;
+          return _content + `<|im_start|>${message.role || "user"}\n${v["text"] || ""}<|im_end|>\n`;
+        }, content);
+      }
+      return (content += `<|im_start|>${message.role || "user"}\n${
+        message.content
+      }<|im_end|>\n`);
+    }, "").replace(/\!\[.*\]\(.+\)/g, "");
+    logger.info("\n数字人对话合并：\n" + content);
+  }
+  return [
+    {
+      content,
+      contentType: "text",
+      role: "user",
+      ext: {
+        searchType: "",
+        pptGenerate: false,
+        deepThink: false,
+        deepResearch: false
+      }
+    },
+    ...refs
+  ];
+}
+
+/**
+ * 接收数字人第一步响应，获取cardCode、msgId、sessionId
+ *
+ * @param stream 消息流
+ */
+async function receiveDigitalPeopleFirstStep(stream: any): Promise<{cardCode: string, msgId: string, sessionId: string}> {
+  return new Promise((resolve, reject) => {
+    let result = {
+      cardCode: "",
+      msgId: "",
+      sessionId: ""
+    };
+
+    const parser = createParser((event) => {
+      try {
+        if (event.type !== "event") return;
+        if (event.data == "[DONE]") return;
+
+        // Log the raw event data
+        logger.info(`[DigitalPeopleFirstStep] Received stream data: ${event.data}`);
+
+        // 解析JSON
+        const data = _.attempt(() => JSON.parse(event.data));
+        if (_.isError(data)) {
+          logger.warn(`Stream response invalid, ignoring: ${event.data}`);
+          return;
+        }
+
+        // 检查是否有API错误
+        if (data.errorCode === 'AGENT_PRIVATE_ONLY') {
+          throw new APIException(EX.API_REQUEST_FAILED, `[数字人Agent访问失败]: ${data.errorMsg} (errorCode: ${data.errorCode})。请检查配置文件中的 digital_people_agent_id 是否正确，以及提供的 token 是否有权访问该 Agent。`);
+        }
+
+        // 获取基本信息
+        if (data.sessionId && !result.sessionId) {
+          result.sessionId = data.sessionId;
+        }
+        if (data.msgId && !result.msgId) {
+          result.msgId = data.msgId;
+        }
+
+        // 查找cardCode
+        if (data.contents && Array.isArray(data.contents)) {
+          for (const content of data.contents) {
+            if (content.role === "workflow" && content.contentType === "card" && content.cardCode) {
+              result.cardCode = content.cardCode;
+            }
+          }
+        }
+      } catch (err) {
+        logger.error(`Error parsing stream data: ${err}`);
+      }
+    });
+
+    // 将流数据喂给SSE转换器
+    stream.on("data", (buffer) => parser.feed(buffer.toString()));
+    stream.once("error", (err) => reject(err));
+    stream.once("close", () => {
+      // Log the final result before checking
+      logger.info(`[DigitalPeopleFirstStep] Stream closed. Final extracted info: ${JSON.stringify(result)}`);
+      if (result.cardCode && result.msgId && result.sessionId) {
+        resolve(result);
+      } else {
+        reject(new Error("Failed to get required information from digital people first step"));
+      }
+    });
+  });
+}
+
+/**
+ * 轮询数字人任务状态直到完成
+ *
+ * @param taskId 任务ID
+ * @param ticket tongyi_sso_ticket或login_aliyunid_ticket
+ */
+async function pollDigitalPeopleTask(taskId: string, ticket: string): Promise<{videoUrl: string, poster?: string}> {
+  const maxAttempts = 180; // 最多轮询120次，每次间隔2秒，总共6分钟
+  const pollInterval = 2000; // 2秒间隔
+  const initialDelay = 60000; // 初始延迟60秒再开始轮询
+
+  logger.info(`数字人任务提交成功，等待${initialDelay/1000}秒后开始轮询状态...`);
+  await new Promise(resolve => setTimeout(resolve, initialDelay));
+
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    try {
+      logger.info(`开始第${attempt + 1}次轮询任务状态...`);
+
+      const result = await axios.post(
+        "https://api.tongyi.com/dialog/creative/task/get?from=qianwen_saas&header=%7B%22X-Platform%22%3A%22app%22%7D",
+        {
+          taskIds: [taskId]
+        },
+        {
+          headers: {
+            Cookie: generateCookie(ticket),
+            ...FAKE_HEADERS,
+            Accept: "application/json, text/plain, */*",
+            Origin: "https://www.tongyi.com",
+            Referer: `https://www.tongyi.com/discover/chat?agentId=${serviceConfig.digital_people_agent_id}`,
+          },
+          timeout: 30000,
+          validateStatus: () => true,
+        }
+      );
+
+      const taskData = checkResult(result);
+      if (!taskData.data || !Array.isArray(taskData.data) || taskData.data.length === 0) {
+        throw new Error("Invalid task polling response");
+      }
+
+      const task = taskData.data[0];
+      logger.info(`数字人任务状态: ${task.status}, 当前步骤: ${task.step?.currentStep || 'unknown'}, 轮询次数: ${attempt + 1}/${maxAttempts}`);
+
+      // status: 1=进行中, 2=完成, 0=失败
+      if (task.status === 2) {
+        // 任务完成，获取视频URL
+        if (task.videos && task.videos.length > 0) {
+          logger.success(`数字人视频生成完成！视频URL: ${task.videos[0].url}`);
+          return {
+            videoUrl: task.videos[0].url,
+            poster: task.videos[0].poster
+          };
+        } else {
+          throw new Error("Task completed but no video found");
+        }
+      } else if (task.status === 0) {
+        // 任务失败
+        throw new Error(`Digital people task failed: ${task.statusMessage || 'Unknown error'}`);
+      }
+
+      // 任务仍在进行中，等待后继续轮询
+      if (attempt < maxAttempts - 1) {
+        logger.info(`任务仍在进行中，等待${pollInterval/1000}秒后继续轮询...`);
+        await new Promise(resolve => setTimeout(resolve, pollInterval));
+      }
+
+    } catch (err) {
+      logger.error(`轮询第${attempt + 1}次失败: ${err.message}`);
+      if (attempt === maxAttempts - 1) {
+        throw new Error(`数字人任务轮询失败，已重试${maxAttempts}次: ${err.message}`);
+      }
+      logger.warn(`等待${pollInterval/1000}秒后重试...`);
+      await new Promise(resolve => setTimeout(resolve, pollInterval));
+    }
+  }
+
+  throw new Error(`Digital people task timeout: exceeded maximum polling time (${maxAttempts * pollInterval / 1000 / 60} minutes)`);
+}
+
+/**
+ * 数字人视频生成对话补全
+ *
+ * @param model 模型名称
+ * @param messages 参考gpt系列消息格式，多轮对话请完整提供上下文
+ * @param ticket tongyi_sso_ticket或login_aliyunid_ticket
+ * @param refConvId 引用的会话ID
+ * @param retryCount 重试次数
+ */
+async function createDigitalPeopleCompletion(
+  model = DIGITAL_PEOPLE_MODEL_NAME,
+  messages: any[],
+  ticket: string,
+  refConvId = '',
+  retryCount = 0
+) {
+  let session: http2.ClientHttp2Session;
+  return (async () => {
+    logger.info("数字人视频生成请求:", messages);
+
+    // 提取引用文件URL并上传qwen获得引用的文件ID列表
+    const refFileUrls = extractRefFileUrls(messages);
+    const refs = refFileUrls.length
+      ? await Promise.all(
+          refFileUrls.map((fileUrl) => uploadFile(fileUrl, ticket))
+        )
+      : [];
+
+    // 如果引用对话ID不正确则重置引用
+    if (!/[0-9a-z]{32}/.test(refConvId))
+      refConvId = '';
+
+    // 第一步：发起数字人对话请求
+    const session: http2.ClientHttp2Session = await new Promise(
+      (resolve, reject) => {
+        const session = http2.connect("https://api.tongyi.com");
+        session.on("connect", () => resolve(session));
+        session.on("error", reject);
+      }
+    );
+    const [sessionId, parentMsgId = ''] = refConvId.split('-');
+    const req = session.request({
+      ":method": "POST",
+      ":path": "/dialog/conversation",
+      "Content-Type": "application/json",
+      Cookie: generateCookie(ticket),
+      ...FAKE_HEADERS,
+      Accept: "text/event-stream",
+      // 数字人专用headers
+      Origin: "https://www.tongyi.com",
+      Referer: `https://www.tongyi.com/discover/chat?agentId=${serviceConfig.digital_people_agent_id}`,
+    });
+    req.setTimeout(120000);
+    req.write(
+      JSON.stringify({
+        model: "",
+        action: "next",
+        mode: "chat",
+        userAction: "chat",
+        requestId: util.uuid(false),
+        sessionId,
+        sessionType: "text_chat",
+        parentMsgId,
+        params: {
+          agentId: serviceConfig.digital_people_agent_id,
+          searchType: "",
+          pptGenerate: false,
+          bizScene: "",
+          bizSceneInfo: {},
+          specifiedModel: "",
+          deepThink: false,
+          deepResearch: false
+        },
+        contents: prepareDigitalPeopleMessages(messages, refs, !!refConvId),
+      })
+    );
+    req.end();
+    req.setEncoding("utf8");
+    const streamStartTime = util.timestamp();
+
+    // 接收第一步响应，获取cardCode、msgId、sessionId
+    const firstStepResult = await receiveDigitalPeopleFirstStep(req);
+    session.close();
+
+    logger.success(
+      `Digital people first step completed ${util.timestamp() - streamStartTime}ms`
+    );
+
+    // 第二步：提交任务获取taskId
+    const taskSubmitResult = await axios.post(
+      "https://api.tongyi.com/dialog/workflow/task/submit",
+      {
+        agentId: serviceConfig.digital_people_agent_id,
+        cardCode: firstStepResult.cardCode,
+        msgId: firstStepResult.msgId,
+        sessionId: firstStepResult.sessionId,
+        operationType: "create",
+        taskParam: {}
+      },
+      {
+        headers: {
+          Cookie: generateCookie(ticket),
+          ...FAKE_HEADERS,
+          Accept: "application/json, text/plain, */*",
+          Origin: "https://www.tongyi.com",
+          Referer: `https://www.tongyi.com/discover/chat?agentId=${serviceConfig.digital_people_agent_id}`,
+        },
+        timeout: 30000,
+        validateStatus: () => true,
+      }
+    );
+
+    const taskSubmitData = checkResult(taskSubmitResult);
+    if (!taskSubmitData.data || !taskSubmitData.data.contents || !taskSubmitData.data.contents[0]) {
+      throw new Error("Failed to submit digital people task");
+    }
+
+    const taskContent = JSON.parse(taskSubmitData.data.contents[0].content);
+    const taskId = taskContent.taskId;
+
+    logger.info("数字人任务ID:", taskId);
+
+    // 第三步：轮询任务状态直到完成
+    logger.info(`开始轮询数字人任务状态，任务ID: ${taskId}`);
+    const videoResult = await pollDigitalPeopleTask(taskId, ticket);
+    logger.success(`数字人视频生成成功完成！耗时: ${util.timestamp() - streamStartTime}ms`);
+
+    // 异步移除会话
+    removeConversation(firstStepResult.sessionId, ticket).catch((err) => console.error(err));
+
+    return {
+      id: firstStepResult.sessionId + "-" + firstStepResult.msgId,
+      model: DIGITAL_PEOPLE_MODEL_NAME,
+      object: "chat.completion",
+      choices: [
+        {
+          index: 0,
+          message: {
+            role: "assistant",
+            content: `数字人视频生成完成！\n\n视频地址：${videoResult.videoUrl}\n封面图片：${videoResult.poster || ''}`
+          },
+          finish_reason: "stop",
+        },
+      ],
+      usage: { prompt_tokens: 1, completion_tokens: 1, total_tokens: 2 },
+      created: util.unixTimestamp(),
+      video_url: videoResult.videoUrl,
+      poster: videoResult.poster
+    };
+
+  })().catch((err) => {
+    session && session.close();
+    if (retryCount < MAX_RETRY_COUNT) {
+      logger.error(`Digital people completion error: ${err.message}`);
+      logger.warn(`Try again after ${RETRY_DELAY / 1000}s...`);
+      return (async () => {
+        await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
+        return createDigitalPeopleCompletion(model, messages, ticket, refConvId, retryCount + 1);
+      })();
+    }
+    throw err;
+  });
+}
+
+/**
+ * 流式数字人视频生成对话补全
+ *
+ * @param model 模型名称
+ * @param messages 参考gpt系列消息格式，多轮对话请完整提供上下文
+ * @param ticket tongyi_sso_ticket或login_aliyunid_ticket
+ * @param refConvId 引用的会话ID
+ * @param retryCount 重试次数
+ */
+async function createDigitalPeopleCompletionStream(
+  model = DIGITAL_PEOPLE_MODEL_NAME,
+  messages: any[],
+  ticket: string,
+  refConvId = '',
+  retryCount = 0
+) {
+  let session: http2.ClientHttp2Session;
+  return (async () => {
+    logger.info("数字人视频生成流式请求:", messages);
+
+    // 提取引用文件URL并上传qwen获得引用的文件ID列表
+    const refFileUrls = extractRefFileUrls(messages);
+    const refs = refFileUrls.length
+      ? await Promise.all(
+          refFileUrls.map((fileUrl) => uploadFile(fileUrl, ticket))
+        )
+      : [];
+
+    // 如果引用对话ID不正确则重置引用
+    if (!/[0-9a-z]{32}/.test(refConvId))
+      refConvId = ''
+
+    // 创建转换流
+    const transStream = new PassThrough();
+    const created = util.unixTimestamp();
+
+    // 发送初始响应
+    !transStream.closed &&
+      transStream.write(
+        `data: ${JSON.stringify({
+          id: "",
+          model: DIGITAL_PEOPLE_MODEL_NAME,
+          object: "chat.completion.chunk",
+          choices: [
+            {
+              index: 0,
+              delta: { role: "assistant", content: "" },
+              finish_reason: null,
+            },
+          ],
+          created,
+        })}\n\n`
+      );
+
+    // 异步处理数字人视频生成
+    (async () => {
+      try {
+        // 发送进度更新
+        const sendProgress = (content: string) => {
+          if (!transStream.closed) {
+            transStream.write(
+              `data: ${JSON.stringify({
+                id: util.uuid(false),
+                model: DIGITAL_PEOPLE_MODEL_NAME,
+                object: "chat.completion.chunk",
+                choices: [
+                  { index: 0, delta: { content }, finish_reason: null },
+                ],
+                created,
+              })}\n\n`
+            );
+          }
+        };
+
+        sendProgress("正在启动数字人视频生成...\n");
+
+        // 第一步：发起数字人对话请求
+        const session: http2.ClientHttp2Session = await new Promise(
+          (resolve, reject) => {
+            const session = http2.connect("https://api.tongyi.com");
+            session.on("connect", () => resolve(session));
+            session.on("error", reject);
+          }
+        );
+        const [sessionId, parentMsgId = ''] = refConvId.split('-');
+        const req = session.request({
+          ":method": "POST",
+          ":path": "/dialog/conversation",
+          "Content-Type": "application/json",
+          Cookie: generateCookie(ticket),
+          ...FAKE_HEADERS,
+          Accept: "text/event-stream",
+          Origin: "https://www.tongyi.com",
+          Referer: `https://www.tongyi.com/discover/chat?agentId=${serviceConfig.digital_people_agent_id}`,
+        });
+        req.setTimeout(120000);
+        req.write(
+          JSON.stringify({
+            model: "",
+            action: "next",
+            mode: "chat",
+            userAction: "chat",
+            requestId: util.uuid(false),
+            sessionId,
+            sessionType: "text_chat",
+            parentMsgId,
+            params: {
+              agentId: serviceConfig.digital_people_agent_id,
+              searchType: "",
+              pptGenerate: false,
+              bizScene: "",
+              bizSceneInfo: {},
+              specifiedModel: "",
+              deepThink: false,
+              deepResearch: false
+            },
+            contents: prepareDigitalPeopleMessages(messages, refs, !!refConvId),
+          })
+        );
+        req.end();
+        req.setEncoding("utf8");
+
+        sendProgress("正在分析内容...\n");
+
+        // 接收第一步响应
+        const firstStepResult = await receiveDigitalPeopleFirstStep(req);
+        session.close();
+
+        sendProgress("正在提交视频生成任务...\n");
+
+        // 第二步：提交任务获取taskId
+        const taskSubmitResult = await axios.post(
+          "https://api.tongyi.com/dialog/workflow/task/submit",
+          {
+            agentId: serviceConfig.digital_people_agent_id,
+            cardCode: "tongyi-plugin-creator",
+            msgId: firstStepResult.msgId,
+            sessionId: firstStepResult.sessionId,
+            operationType: "create",
+            taskParam: {}
+          },
+          {
+            headers: {
+              Cookie: generateCookie(ticket),
+              ...FAKE_HEADERS,
+              Accept: "application/json, text/plain, */*",
+              Origin: "https://www.tongyi.com",
+              Referer: `https://www.tongyi.com/discover/chat?agentId=${serviceConfig.digital_people_agent_id}`,
+            },
+            timeout: 30000,
+            validateStatus: () => true,
+          }
+        );
+
+        const taskSubmitData = checkResult(taskSubmitResult);
+        if (!taskSubmitData.data || !taskSubmitData.data.contents || !taskSubmitData.data.contents[0]) {
+          throw new Error("Failed to submit digital people task");
+        }
+
+        const taskContent = JSON.parse(taskSubmitData.data.contents[0].content);
+        const taskId = taskContent.taskId;
+
+        sendProgress("任务已提交，正在生成视频...\n");
+
+        // 第三步：轮询任务状态
+        const videoResult = await pollDigitalPeopleTaskWithProgress(taskId, ticket, sendProgress);
+
+        // 发送最终结果
+        const finalContent = `\n数字人视频生成完成！\n\n视频地址：${videoResult.videoUrl}\n${videoResult.poster ? `封面图片：${videoResult.poster}` : ''}`;
+
+        !transStream.closed &&
+          transStream.write(
+            `data: ${JSON.stringify({
+              id: firstStepResult.sessionId + "-" + firstStepResult.msgId,
+              model: DIGITAL_PEOPLE_MODEL_NAME,
+              object: "chat.completion.chunk",
+              choices: [
+                {
+                  index: 0,
+                  delta: { content: finalContent },
+                  finish_reason: "stop",
+                },
+              ],
+              usage: { prompt_tokens: 1, completion_tokens: 1, total_tokens: 2 },
+              created,
+              video_url: videoResult.videoUrl,
+              poster: videoResult.poster
+            })}\n\n`
+          );
+
+        !transStream.closed && transStream.end("data: [DONE]\n\n");
+
+        // 异步移除会话
+        removeConversation(firstStepResult.sessionId, ticket).catch((err) => console.error(err));
+
+      } catch (err) {
+        logger.error("Digital people stream error:", err);
+        !transStream.closed &&
+          transStream.write(
+            `data: ${JSON.stringify({
+              id: util.uuid(false),
+              model: DIGITAL_PEOPLE_MODEL_NAME,
+              object: "chat.completion.chunk",
+              choices: [
+                {
+                  index: 0,
+                  delta: { content: `\n生成失败：${err.message}` },
+                  finish_reason: "stop",
+                },
+              ],
+              created,
+            })}\n\n`
+          );
+        !transStream.closed && transStream.end("data: [DONE]\n\n");
+      }
+    })();
+
+    return transStream;
+
+  })().catch((err) => {
+    session && session.close();
+    if (retryCount < MAX_RETRY_COUNT) {
+      logger.error(`Digital people stream error: ${err.message}`);
+      logger.warn(`Try again after ${RETRY_DELAY / 1000}s...`);
+      return (async () => {
+        await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
+        return createDigitalPeopleCompletionStream(model, messages, ticket, refConvId, retryCount + 1);
+      })();
+    }
+    throw err;
+  });
+}
+
+/**
+ * 带进度更新的轮询数字人任务状态
+ */
+async function pollDigitalPeopleTaskWithProgress(
+  taskId: string,
+  ticket: string,
+  sendProgress: (content: string) => void
+): Promise<{videoUrl: string, poster?: string}> {
+  const maxAttempts = 120; // 最多轮询120次，每次间隔5秒，总共10分钟
+  const pollInterval = 5000; // 5秒间隔
+  const initialDelay = 30000; // 初始延迟30秒再开始轮询
+
+  sendProgress(`任务已提交，等待${initialDelay/1000}秒后开始生成...\n`);
+  await new Promise(resolve => setTimeout(resolve, initialDelay));
+
+  let lastStep = '';
+
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    try {
+      const result = await axios.post(
+        "https://api.tongyi.com/dialog/creative/task/get?from=qianwen_saas&header=%7B%22X-Platform%22%3A%22app%22%7D",
+        {
+          taskIds: [taskId]
+        },
+        {
+          headers: {
+            Cookie: generateCookie(ticket),
+            ...FAKE_HEADERS,
+            Accept: "application/json, text/plain, */*",
+            Origin: "https://www.tongyi.com",
+            Referer: "https://www.tongyi.com/discover/chat?agentId=${serviceConfig.digital_people_agent_id}",
+          },
+          timeout: 30000,
+          validateStatus: () => true,
+        }
+      );
+
+      const taskData = checkResult(result);
+      if (!taskData.data || !Array.isArray(taskData.data) || taskData.data.length === 0) {
+        throw new Error("Invalid task polling response");
+      }
+
+      const task = taskData.data[0];
+      const currentStep = task.step?.currentStep || 'unknown';
+
+      // 只在步骤变化时发送进度更新，避免重复消息
+      if (currentStep !== lastStep) {
+        if (currentStep === 'Outline') {
+          sendProgress("正在生成大纲...\n");
+        } else if (currentStep === 'VideoCombine') {
+          sendProgress("正在合成视频...\n");
+        } else {
+          sendProgress(`处理中... (${currentStep})\n`);
+        }
+        lastStep = currentStep;
+      }
+
+      // 每10次轮询发送一次进度提醒
+      if (attempt > 0 && attempt % 10 === 0) {
+        sendProgress(`继续处理中... (${Math.floor(attempt * pollInterval / 1000)}秒)\n`);
+      }
+
+      logger.info(`数字人任务状态: ${task.status}, 当前步骤: ${currentStep}, 轮询次数: ${attempt + 1}/${maxAttempts}`);
+
+      if (task.status === 2) {
+        if (task.videos && task.videos.length > 0) {
+          logger.success(`数字人视频生成完成！视频URL: ${task.videos[0].url}`);
+          return {
+            videoUrl: task.videos[0].url,
+            poster: task.videos[0].poster
+          };
+        } else {
+          throw new Error("Task completed but no video found");
+        }
+      } else if (task.status === 0) {
+        throw new Error(`Digital people task failed: ${task.statusMessage || 'Unknown error'}`);
+      }
+
+      if (attempt < maxAttempts - 1) {
+        await new Promise(resolve => setTimeout(resolve, pollInterval));
+      }
+
+    } catch (err) {
+      logger.error(`流式轮询第${attempt + 1}次失败: ${err.message}`);
+      if (attempt === maxAttempts - 1) {
+        throw new Error(`数字人任务轮询失败，已重试${maxAttempts}次: ${err.message}`);
+      }
+      await new Promise(resolve => setTimeout(resolve, pollInterval));
+    }
+  }
+
+  throw new Error(`Digital people task timeout: exceeded maximum polling time (${maxAttempts * pollInterval / 1000 / 60} minutes)`);
+}
+
 export default {
   createCompletion,
   createCompletionStream,
@@ -1933,4 +2638,6 @@ export default {
   createLawCompletionStream,
   createSolveCompletion,
   createSolveCompletionStream,
+  createDigitalPeopleCompletion,
+  createDigitalPeopleCompletionStream,
 };
